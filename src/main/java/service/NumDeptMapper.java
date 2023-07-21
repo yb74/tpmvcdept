@@ -120,6 +120,22 @@ public class NumDeptMapper implements DeptNumService {
     	{ "989", "île de Clipperton" }
     };
   
+  public Map<String, String> getDeptMap() {
+		return deptMap;
+	}
+	
+	public void setDeptMap(Map<String, String> deptMap) {
+		this.deptMap = deptMap;
+	}
+	
+	public String[][] getDeptArray() {
+		return deptArray;
+	}
+	
+	public void setDeptArray(String[][] deptArray) {
+		this.deptArray = deptArray;
+	}
+  
   public NumDeptMapper() {
     deptMap = new HashMap<String,String>();
     
@@ -132,4 +148,11 @@ public class NumDeptMapper implements DeptNumService {
   public String findDept(String deptNum) {
     return deptMap.get(deptNum);
   }
+
+@Override
+public String toString() {
+	return "NumDeptMapper [deptMap=" + deptMap + ", deptArray=" + Arrays.toString(deptArray) + "]";
+}
+  
+  
 }
