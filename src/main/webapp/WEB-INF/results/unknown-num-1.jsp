@@ -8,7 +8,10 @@
 </head>
 <body>
 	<div style="display:flex; flex-direction: column; justify-content:center; align-items:center; background-color:red; height:500px">
-		<p>Unknown department number</p>
+		<h1>Données inconnu</h1>
+		<p>Aucune région trouvée avec le code : ${key.deptNum}</p>
 	</div>
+	<body>
+</body>
 </body>
 </html>

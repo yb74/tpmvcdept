@@ -18,6 +18,8 @@ public class DeptPair {
 		this.deptNum = deptNum;
 		this.deptName = deptName;
 	}
+	
+	public DeptPair() {}
 
 	public Long getId() {
 		return id;
