@@ -23,22 +23,35 @@ public class CreateDeptPair extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		// retrieving dept-num and dept-name name values send by POST form request
 		String deptNum = request.getParameter("dept-num");
 		String deptName = request.getParameter("dept-nom");
 		
+		// setting deptPair values and passing data to result.jsp view template
 		System.out.println("Num de département = " + deptNum);
-		System.out.println("Num de département = " + deptName);
+		DeptPair deptPair = new DeptPair(deptNum, deptName);
+		request.setAttribute("key", deptPair);
+
+		// managing errors
+		String address = "";
+		if (deptNum == "" || deptName == "") {
+			address = "/WEB-INF/results/missing-num.jsp";
+		} else {
+			address = "/WEB-INF/results/show-created-departement.jsp";
+		}
+
+		request.getRequestDispatcher(address).forward(request, response);
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doGet(request, response);
+		
+		String deptNum = request.getParameter("dept-num");
+		String deptName = request.getParameter("dept-nom");
 		
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu");
         EntityManager em = emf.createEntityManager();
         EntityTransaction txn = em.getTransaction();
-	        
-		// retrieving dept-num name value send by POST form request
 
 		System.out.println("Before persist condition");
 		
